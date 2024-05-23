@@ -18,7 +18,7 @@ import javafx.stage.Stage;
 //第二次修改
 //B2
 //C4
-
+//ide
 public class MainApplication extends Application {
 	@Override
 	public void start(Stage stage) throws Exception {
