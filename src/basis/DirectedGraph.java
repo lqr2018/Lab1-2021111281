@@ -87,4 +87,18 @@ public class DirectedGraph {
 		}
 		return code;
 	}
+
+	public boolean hasEdge(String head, String tail) {
+		Vertex a = new Vertex();
+		Vertex b = new Vertex();
+        for (Vertex v : vertices) {
+            if (v.name.equals(head)) {
+            	a = v;
+            }
+            if (v.name.equals(tail)) {
+            	b = v;
+            }
+        }
+        return a.successors.contains(b);
+    }
 }

@@ -54,9 +54,14 @@ public class GraphProcessor {
 		if (str != null) {
 			for (int i = 0; i < str.length(); ++i) {
 				char c = str.charAt(i);
+				/*
 				if (Character.isLetter(c)) {
 					sb.append(Character.toLowerCase(c));
 				}
+				*/
+				if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')) {
+                    sb.append(Character.toLowerCase(c));
+                }
 			}
 		}
 		return (sb.toString().equals("")) ? null : sb.toString();
