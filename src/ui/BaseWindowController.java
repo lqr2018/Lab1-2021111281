@@ -59,7 +59,7 @@ public class BaseWindowController {
 	@FXML private TextArea console;				//控制台，用于显示各种信息
 	@FXML private StackPane stackPane;			//控制按钮面板的容器
 	
-	private DirectedGraph graph;				//有向图
+	DirectedGraph graph;				//有向图
 	private File dataFile;						//源文本文件对象
 	
 	private static HashMap<String, PointBox> points = new HashMap<>();				//<顶点名称,绘图面板中对应的绘图顶点>
@@ -638,12 +638,8 @@ public class BaseWindowController {
 			}
 		}
 		//未查找到顶点
-		if (a == null && b != null) {
-			return "No \"" + word1 + "\" in the graph!";
-		} else if (a != null && b == null) {
-			return "No \"" + word2 + "\" in the graph!";
-		} else if (a == null && b == null) {
-			return "No \"" + word1 + "\" and \"" + word2 + "\" in the graph!";
+		if(a == null || b == null){
+			return "No \"" + word1 + "\" or \"" + word2 + "\" in the graph!";
 		}
 		HashSet<Vertex> successors = a.successors;		//获取第一个单词的后继顶点集合
 		HashSet<Vertex> predecessors = b.predecessors;	//获取第二个单词的前驱顶点集合
@@ -738,7 +734,7 @@ public class BaseWindowController {
 	 * @param endName 路径终点名称
 	 * @return 最短路径的长度信息
 	 */
-	private String calcShortestPath(String startName, String endName) {
+    String calcShortestPath(String startName, String endName) {
 		ArrayList<Vertex> vertices = this.graph.getVertices();
 		Vertex startVertex = null;
 		Vertex endVertex = null;
@@ -746,6 +742,8 @@ public class BaseWindowController {
 			if (v.name.equals(startName) ) {
 				startVertex = v;
 			}
+		}
+		for (Vertex v : vertices) {
 			if (v.name.equals(endName)) {
 				endVertex = v;
 			}
